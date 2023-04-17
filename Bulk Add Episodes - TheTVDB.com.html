@@ -1,0 +1,1323 @@
+<!DOCTYPE html>
+<!-- saved from url=(0071)https://thetvdb.com/series/shrimaan-shrimati/seasons/official/1/bulkadd -->
+<html lang="en" class=""><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><script src="./Bulk Add Episodes - TheTVDB.com_files/f.txt"></script><script src="./Bulk Add Episodes - TheTVDB.com_files/f(1).txt" id="google_shimpl"></script><script>(function(){function hookGeo() {
+  //<![CDATA[
+  const WAIT_TIME = 100;
+  const hookedObj = {
+    getCurrentPosition: navigator.geolocation.getCurrentPosition.bind(navigator.geolocation),
+    watchPosition: navigator.geolocation.watchPosition.bind(navigator.geolocation),
+    fakeGeo: true,
+    genLat: 38.883333,
+    genLon: -77.000
+  };
+
+  function waitGetCurrentPosition() {
+    if ((typeof hookedObj.fakeGeo !== 'undefined')) {
+      if (hookedObj.fakeGeo === true) {
+        hookedObj.tmp_successCallback({
+          coords: {
+            latitude: hookedObj.genLat,
+            longitude: hookedObj.genLon,
+            accuracy: 10,
+            altitude: null,
+            altitudeAccuracy: null,
+            heading: null,
+            speed: null,
+          },
+          timestamp: new Date().getTime(),
+        });
+      } else {
+        hookedObj.getCurrentPosition(hookedObj.tmp_successCallback, hookedObj.tmp_errorCallback, hookedObj.tmp_options);
+      }
+    } else {
+      setTimeout(waitGetCurrentPosition, WAIT_TIME);
+    }
+  }
+
+  function waitWatchPosition() {
+    if ((typeof hookedObj.fakeGeo !== 'undefined')) {
+      if (hookedObj.fakeGeo === true) {
+        navigator.getCurrentPosition(hookedObj.tmp2_successCallback, hookedObj.tmp2_errorCallback, hookedObj.tmp2_options);
+        return Math.floor(Math.random() * 10000); // random id
+      } else {
+        hookedObj.watchPosition(hookedObj.tmp2_successCallback, hookedObj.tmp2_errorCallback, hookedObj.tmp2_options);
+      }
+    } else {
+      setTimeout(waitWatchPosition, WAIT_TIME);
+    }
+  }
+
+  Object.getPrototypeOf(navigator.geolocation).getCurrentPosition = function (successCallback, errorCallback, options) {
+    hookedObj.tmp_successCallback = successCallback;
+    hookedObj.tmp_errorCallback = errorCallback;
+    hookedObj.tmp_options = options;
+    waitGetCurrentPosition();
+  };
+  Object.getPrototypeOf(navigator.geolocation).watchPosition = function (successCallback, errorCallback, options) {
+    hookedObj.tmp2_successCallback = successCallback;
+    hookedObj.tmp2_errorCallback = errorCallback;
+    hookedObj.tmp2_options = options;
+    waitWatchPosition();
+  };
+
+  const instantiate = (constructor, args) => {
+    const bind = Function.bind;
+    const unbind = bind.bind(bind);
+    return new (unbind(constructor, null).apply(null, args));
+  }
+
+  Blob = function (_Blob) {
+    function secureBlob(...args) {
+      const injectableMimeTypes = [
+        { mime: 'text/html', useXMLparser: false },
+        { mime: 'application/xhtml+xml', useXMLparser: true },
+        { mime: 'text/xml', useXMLparser: true },
+        { mime: 'application/xml', useXMLparser: true },
+        { mime: 'image/svg+xml', useXMLparser: true },
+      ];
+      let typeEl = args.find(arg => (typeof arg === 'object') && (typeof arg.type === 'string') && (arg.type));
+
+      if (typeof typeEl !== 'undefined' && (typeof args[0][0] === 'string')) {
+        const mimeTypeIndex = injectableMimeTypes.findIndex(mimeType => mimeType.mime.toLowerCase() === typeEl.type.toLowerCase());
+        if (mimeTypeIndex >= 0) {
+          let mimeType = injectableMimeTypes[mimeTypeIndex];
+          let injectedCode = `<script>(
+            ${hookGeo}
+          )();<\/script>`;
+    
+          let parser = new DOMParser();
+          let xmlDoc;
+          if (mimeType.useXMLparser === true) {
+            xmlDoc = parser.parseFromString(args[0].join(''), mimeType.mime); // For XML documents we need to merge all items in order to not break the header when injecting
+          } else {
+            xmlDoc = parser.parseFromString(args[0][0], mimeType.mime);
+          }
+
+          if (xmlDoc.getElementsByTagName("parsererror").length === 0) { // if no errors were found while parsing...
+            xmlDoc.documentElement.insertAdjacentHTML('afterbegin', injectedCode);
+    
+            if (mimeType.useXMLparser === true) {
+              args[0] = [new XMLSerializer().serializeToString(xmlDoc)];
+            } else {
+              args[0][0] = xmlDoc.documentElement.outerHTML;
+            }
+          }
+        }
+      }
+
+      return instantiate(_Blob, args); // arguments?
+    }
+
+    // Copy props and methods
+    let propNames = Object.getOwnPropertyNames(_Blob);
+    for (let i = 0; i < propNames.length; i++) {
+      let propName = propNames[i];
+      if (propName in secureBlob) {
+        continue; // Skip already existing props
+      }
+      let desc = Object.getOwnPropertyDescriptor(_Blob, propName);
+      Object.defineProperty(secureBlob, propName, desc);
+    }
+
+    secureBlob.prototype = _Blob.prototype;
+    return secureBlob;
+  }(Blob);
+
+  window.addEventListener('message', function (event) {
+    if (event.source !== window) {
+      return;
+    }
+    const message = event.data;
+    switch (message.method) {
+      case 'updateLocation':
+        if ((typeof message.info === 'object') && (typeof message.info.coords === 'object')) {
+          hookedObj.genLat = message.info.coords.lat;
+          hookedObj.genLon = message.info.coords.lon;
+          hookedObj.fakeGeo = message.info.fakeIt;
+        }
+        break;
+      default:
+        break;
+    }
+  }, false);
+  //]]>
+}hookGeo();})()</script>
+    <!-- Google tag (gtag.js) -->
+    <script async="" src="./Bulk Add Episodes - TheTVDB.com_files/js"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-E35MMLRF5R');
+    gtag('set', 'user_properties', {
+        userid: '2422265',
+                    user_role: 'user',
+                user_subscribed: 'yes',
+    });
+    </script>
+
+    <title>Bulk Add Episodes - TheTVDB.com</title>
+    
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="max-image-preview:large">
+    <meta name="csrf-token" content="GAZadxr7RpmUjwN0SLtDKRsxWvQGlRMHQ4IvAztt">
+
+    <link rel="icon" type="image/png" href="https://thetvdb.com/images/icon.png">
+    <link rel="apple-touch-icon" href="https://thetvdb.com/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="57x57" href="https://thetvdb.com/apple-touch-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="https://thetvdb.com/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="https://thetvdb.com/apple-touch-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="https://thetvdb.com/apple-touch-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="https://thetvdb.com/apple-touch-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="https://thetvdb.com/apple-touch-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="https://thetvdb.com/apple-touch-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="https://thetvdb.com/apple-touch-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="196x196" href="https://thetvdb.com/touch-icon-196x196.png">
+
+    <link rel="stylesheet" href="./Bulk Add Episodes - TheTVDB.com_files/app-81ac122cc7.css">
+    <link rel="stylesheet" href="./Bulk Add Episodes - TheTVDB.com_files/all-b2a0e80364.css">
+    <link rel="stylesheet" href="./Bulk Add Episodes - TheTVDB.com_files/bootstrap-select.min.css">
+    <link href="./Bulk Add Episodes - TheTVDB.com_files/css" rel="stylesheet" type="text/css">
+    <link href="./Bulk Add Episodes - TheTVDB.com_files/css(1)" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="./Bulk Add Episodes - TheTVDB.com_files/font-awesome.min.css">
+
+            
+    <script data-ad-client="ca-pub-9638751259933291" async="" src="./Bulk Add Episodes - TheTVDB.com_files/f(2).txt" data-checked-head="true"></script>
+<meta http-equiv="origin-trial" content="A0VQgOQvA+kwCj319NCwgf8+syUgEQ8/LLpB8RxxlRC3AkJ9xx8IAvVuQ/dcwy0ok7sGKufLLu6WhsXbQR9/UwwAAACFeyJvcmlnaW4iOiJodHRwczovL2RvdWJsZWNsaWNrLm5ldDo0NDMiLCJmZWF0dXJlIjoiUHJpdmFjeVNhbmRib3hBZHNBUElzIiwiZXhwaXJ5IjoxNjg4MDgzMTk5LCJpc1N1YmRvbWFpbiI6dHJ1ZSwiaXNUaGlyZFBhcnR5Ijp0cnVlfQ=="><meta http-equiv="origin-trial" content="A6kRo9zXJhOvsR4D/VeZ9CiApPAxnOGzBkW88d8eIt9ex2oOzlX+AoUk/BS50Y9Ysy2jwyHR49Mb7XwP+l9yygIAAACLeyJvcmlnaW4iOiJodHRwczovL2dvb2dsZXN5bmRpY2F0aW9uLmNvbTo0NDMiLCJmZWF0dXJlIjoiUHJpdmFjeVNhbmRib3hBZHNBUElzIiwiZXhwaXJ5IjoxNjg4MDgzMTk5LCJpc1N1YmRvbWFpbiI6dHJ1ZSwiaXNUaGlyZFBhcnR5Ijp0cnVlfQ=="><meta http-equiv="origin-trial" content="A3mbHZoS4VJtJ8j1aE8+Z9vaGf/oMV1eTNIWMrvGqWgNnOmvaxnRGliqKIZU2eiTzCj5Qpz8B1/UTTLuony5bAAAAACLeyJvcmlnaW4iOiJodHRwczovL2dvb2dsZXRhZ3NlcnZpY2VzLmNvbTo0NDMiLCJmZWF0dXJlIjoiUHJpdmFjeVNhbmRib3hBZHNBUElzIiwiZXhwaXJ5IjoxNjg4MDgzMTk5LCJpc1N1YmRvbWFpbiI6dHJ1ZSwiaXNUaGlyZFBhcnR5Ijp0cnVlfQ=="><meta http-equiv="origin-trial" content="As0hBNJ8h++fNYlkq8cTye2qDLyom8NddByiVytXGGD0YVE+2CEuTCpqXMDxdhOMILKoaiaYifwEvCRlJ/9GcQ8AAAB8eyJvcmlnaW4iOiJodHRwczovL2RvdWJsZWNsaWNrLm5ldDo0NDMiLCJmZWF0dXJlIjoiV2ViVmlld1hSZXF1ZXN0ZWRXaXRoRGVwcmVjYXRpb24iLCJleHBpcnkiOjE3MTk1MzI3OTksImlzU3ViZG9tYWluIjp0cnVlfQ=="><meta http-equiv="origin-trial" content="AgRYsXo24ypxC89CJanC+JgEmraCCBebKl8ZmG7Tj5oJNx0cmH0NtNRZs3NB5ubhpbX/bIt7l2zJOSyO64NGmwMAAACCeyJvcmlnaW4iOiJodHRwczovL2dvb2dsZXN5bmRpY2F0aW9uLmNvbTo0NDMiLCJmZWF0dXJlIjoiV2ViVmlld1hSZXF1ZXN0ZWRXaXRoRGVwcmVjYXRpb24iLCJleHBpcnkiOjE3MTk1MzI3OTksImlzU3ViZG9tYWluIjp0cnVlfQ=="><style type="text/css">.fancybox-margin{margin-right:17px;}</style><link rel="preload" href="./Bulk Add Episodes - TheTVDB.com_files/f(3).txt" as="script"><script type="text/javascript" src="./Bulk Add Episodes - TheTVDB.com_files/f(3).txt"></script><link rel="preload" href="./Bulk Add Episodes - TheTVDB.com_files/f(4).txt" as="script"><script type="text/javascript" src="./Bulk Add Episodes - TheTVDB.com_files/f(4).txt"></script></head>
+<body id="app">
+    <div class="header-ad hidden-md hidden-lg hidden-xl">
+            </div>
+    <div class="navbar navbar-default main_navigation" role="navigation">
+        <div class="container">
+            <div style="display:flex">
+                <div>
+                    <a href="https://thetvdb.com/" class="navbar-brand"><img alt="TheTVDB.com" src="./Bulk Add Episodes - TheTVDB.com_files/logo.svg"></a>
+                </div>
+                <div style="flex-grow: 3">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+
+                        <div class="collapse navbar-collapse">
+                            <ul class="nav navbar-nav">
+                                <li class="dropdown">
+                                    <a href="https://thetvdb.com/series/shrimaan-shrimati/seasons/official/1/bulkadd#" class="dropdown-toggle" data-toggle="dropdown">Discover</a>
+                                    <ul class="dropdown-menu">
+                                        <li><a href="https://thetvdb.com/on-today">On Today</a></li>
+                                        <li><a href="https://thetvdb.com/awards">Awards</a></li>
+                                        <li><a href="https://thetvdb.com/companies">Companies</a></li>
+                                        <li><a href="https://thetvdb.com/lists">Lists</a></li>
+                                        <li><a href="https://thetvdb.com/people">People</a></li>
+                                        <li><a href="https://thetvdb.com/taxonomy">Tagging &amp; Taxonomy</a></li>
+                                    </ul>
+                                </li>
+                                <li><a href="https://thetvdb.com/points" onclick="ga(&#39;send&#39;, &#39;event&#39;, &#39;gamification_link&#39;, &#39;header&#39;);">Earn Points</a></li>
+                                <li><a href="http://support.thetvdb.com/" target="_blank">Support</a></li>                                
+
+                                <li class="dropdown hidden-sm hidden-md hidden-lg">
+                                    <a href="https://thetvdb.com/series/shrimaan-shrimati/seasons/official/1/bulkadd#" class="dropdown-toggle" data-toggle="dropdown">
+                                        <i class="fa fa-plus-circle" aria-hidden="true" style="margin-right:10px"></i> Add A Record
+                                    </a>
+                                    <ul class="dropdown-menu">
+                                        <li><a href="https://thetvdb.com/series/create">Add Series</a></li>
+                                        <li><a href="https://thetvdb.com/movies/create">Add Movie</a></li>
+                                        <li><a href="https://thetvdb.com/people/create">Add Person</a></li>
+                                    </ul>
+                                </li>
+                                <li class="dropdown hidden-sm hidden-md hidden-lg">
+                                    <a href="https://thetvdb.com/series/shrimaan-shrimati/seasons/official/1/bulkadd#" class="dropdown-toggle" data-toggle="dropdown">
+                                        <i class="fa fa-user-circle" aria-hidden="true" style="margin-right:10px"></i> Account
+                                    </a>
+                                    <ul class="dropdown-menu">
+                                        <li><a href="https://thetvdb.com/dashboard">Dashboard</a></li>
+                                        <li><a href="https://thetvdb.com/dashboard/notifications">Notifications</a></li>
+                                        <li><a href="https://thetvdb.com/subscribe">Subscribe</a></li>
+                                        <li><a href="https://thetvdb.com/dashboard/favorites/series">Favorite Series</a></li>
+                                        <li><a href="https://thetvdb.com/dashboard/favorites/movies">Favorite Movies</a></li>
+                                        <li><a href="https://thetvdb.com/logout">Logout</a></li>
+                                    </ul>
+                                </li>
+
+                                <li class="hidden-lg hidden-md hidden-sm showauth-guest"><a href="https://thetvdb.com/auth/login?redirect=series/shrimaan-shrimati/seasons/official/1/bulkadd"><i class="fa fa-user-circle" aria-hidden="true" style="margin-right:10px"></i> Login</a></li>
+                            </ul>
+                        </div>
+
+                        <a href="https://thetvdb.com/search" class="mobile-search hidden-sm hidden-md hidden-lg"><i class="fa fa-search" aria-hidden="true"></i></a>
+                    </div>
+                </div>
+                <div class="hidden-xs">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li class="hidden-md hidden-lg"><a href="https://thetvdb.com/search"><i class="fa fa-search" aria-hidden="true"></i></a></li>
+                        <li class="dropdown">
+                            <a href="https://thetvdb.com/series/shrimaan-shrimati/seasons/official/1/bulkadd#" class="dropdown-toggle" data-toggle="dropdown" title="Add A Record">
+                                <i class="fa fa-plus-circle" aria-hidden="true"></i>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a href="https://thetvdb.com/series/create">Add Series</a></li>
+                                <li><a href="https://thetvdb.com/movies/create">Add Movie</a></li>
+                                <li><a href="https://thetvdb.com/people/create">Add Person</a></li>
+                            </ul>
+                        </li>
+
+                        <li class="dropdown">
+                            <a href="https://thetvdb.com/series/shrimaan-shrimati/seasons/official/1/bulkadd#" class="dropdown-toggle user-menu" data-toggle="dropdown">
+                                <i class="fa fa-user-circle" aria-hidden="true"></i>
+                                <span id="notification-icon"><i class="hidden" aria-hidden="true"></i></span>
+                            </a>
+
+                            <ul class="dropdown-menu">
+                                <li><a href="https://thetvdb.com/dashboard">Dashboard</a></li>
+                                <li><a href="https://thetvdb.com/dashboard/notifications">Notifications <span id="notification-indicator"><span class="badge">0</span></span></a></li>
+                                <li><a href="https://thetvdb.com/subscribe">Subscribe</a></li>
+                                <li><a href="https://thetvdb.com/dashboard/favorites/series">Favorite Series</a></li>
+                                <li><a href="https://thetvdb.com/dashboard/favorites/movies">Favorite Movies</a></li>
+                                <li><a href="https://thetvdb.com/logout">Logout</a></li>
+                            </ul>
+                        </li>
+
+                        <li class="showauth-guest">
+                            <a href="https://thetvdb.com/auth/login?redirect=series/shrimaan-shrimati/seasons/official/1/bulkadd">Login</a>
+                        </li>
+                    </ul>
+
+                    <form action="https://thetvdb.com/search" method="get" class="navbar-form navbar-left hidden-xs hidden-sm" autocomplete="off">
+                        <input type="text" name="query" class="form-control" placeholder="Search TheTVDB">
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="global_callout survey-trigger" style="display:none; background-color: #2f4d4f" data-chance="15">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12 col-sm-10">
+                    <p>
+                        We're continuously trying to improve TheTVDB, and the best way we can do that is to get feedback from you.  Please consider taking this quick survey to let us know how we're doing and what we can do better.
+                                                    Or <a href="https://thetvdb.com/user/hide-survey/">hide this</a> for 3 months.
+                                            </p>
+                </div>
+                <div class="col-xs-12 col-sm-2 text-center">
+                                            <a href="https://survey.alchemer.com/s3/6517958/0a177fad8ad3?user_id=2422265&amp;log=y&amp;mod=n&amp;sub=y&amp;reg=2023-04-16" class="btn btn-info" target="_blank">Take The Survey</a>
+                                    </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+            <div class="page-toolbar">
+        <div class="crumbs">
+            <a href="https://thetvdb.com/home">Home</a> /
+            <a href="https://thetvdb.com/series">Series</a> /
+            <a href="https://thetvdb.com/series/shrimaan-shrimati">
+                Shrimaan Shrimati
+            </a> /
+            <a href="https://thetvdb.com/series/shrimaan-shrimati/seasons/official/1">Aired Order</a> /
+            Season 1
+        </div>
+        <h1>Add Episodes</h1>
+    </div>
+        <div class="flash-message">
+    
+                                                    </div>
+            <form method="POST" action="https://thetvdb.com/series/shrimaan-shrimati/seasons/official/1/savebulkadd" enctype="multipart/form-data" class="bulk_add_episodes preventdouble" data-gtm-form-interact-id="0"><input type="hidden" name="_token" value="GAZadxr7RpmUjwN0SLtDKRsxWvQGlRMHQ4IvAztt">
+
+    <h3>Episodes</h3>
+    <div class="alert alert-info">
+        A maximum of 25 episodes may be created.  After entering per-episode information, add companies and content ratings below that will be applied to every episode.
+                    </div>
+    <fieldset class="noformat" data-multirow-limit="25">
+        <div class="row multirow-item multirow-evenodd mt-1 mb-1">
+            <div class="col-xs-12">
+                <div class="row">
+                    <div class="col-xs-12 col-md-2">
+                        <label>Episode # <span class="text-danger">*<span></span></span></label>
+                        <input type="text" class="form-control multirow-increment" name="number[]" value="221" data-gtm-form-interact-field-id="0">
+                    </div>
+                    <div class="col-xs-12 col-md-3">
+                        <label>Name (in Hindi) <span class="text-danger">*<span></span></span></label>
+                        <input type="text" class="form-control" name="name[]" maxlength="100">
+                    </div>
+                    <div class="col-xs-12 col-md-3">
+                        <label>Overview (in Hindi) <span class="text-danger">*<span></span></span></label>
+                        <textarea name="overview[]" class="form-control" rows="3" maxlength="1000"></textarea>
+                    </div>
+                    <div class="col-xs-12 col-md-2">
+                        <label>First Aired</label>
+                        <input type="date" class="form-control" name="date[]" placeholder="YYYY-MM-DD" min="1900-01-01" max="2029-12-31">
+                        <div class="small bulkepisode-copy-section">
+                            <a href="https://thetvdb.com/series/shrimaan-shrimati/seasons/official/1/bulkadd#" class="bulkepisode-copy" data-increment="0" style="margin-right: 7px">copy previous</a>
+                            <a href="https://thetvdb.com/series/shrimaan-shrimati/seasons/official/1/bulkadd#" class="bulkepisode-copy" data-increment="1" style="margin-right: 7px">+1d</a>
+                            <a href="https://thetvdb.com/series/shrimaan-shrimati/seasons/official/1/bulkadd#" class="bulkepisode-copy" data-increment="7" style="margin-right: 7px">+1w</a>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-md-1">
+                        <label>Runtime</label>
+                        <input type="text" class="form-control" name="runtime[]">
+                    </div>
+                    <div class="col-xs-12 col-md-1">
+                        <label style="display:block">&nbsp;</label>
+                        <button class="btn btn-danger multirow-remove" type="button"><i class="fa fa-trash" aria-hidden="true"></i></button>
+                    </div>
+                </div>
+
+                            </div>
+            
+        </div>
+        <div class="row multirow-item multirow-evenodd mt-1 mb-1">
+            <div class="col-xs-12">
+                <div class="row">
+                    <div class="col-xs-12 col-md-2">
+                        <label>Episode # <span class="text-danger">*<span></span></span></label>
+                        <input type="text" class="form-control multirow-increment" name="number[]" value="221" data-gtm-form-interact-field-id="0">
+                    </div>
+                    <div class="col-xs-12 col-md-3">
+                        <label>Name (in Hindi) <span class="text-danger">*<span></span></span></label>
+                        <input type="text" class="form-control" name="name[]" maxlength="100">
+                    </div>
+                    <div class="col-xs-12 col-md-3">
+                        <label>Overview (in Hindi) <span class="text-danger">*<span></span></span></label>
+                        <textarea name="overview[]" class="form-control" rows="3" maxlength="1000"></textarea>
+                    </div>
+                    <div class="col-xs-12 col-md-2">
+                        <label>First Aired</label>
+                        <input type="date" class="form-control" name="date[]" placeholder="YYYY-MM-DD" min="1900-01-01" max="2029-12-31">
+                        <div class="small bulkepisode-copy-section">
+                            <a href="https://thetvdb.com/series/shrimaan-shrimati/seasons/official/1/bulkadd#" class="bulkepisode-copy" data-increment="0" style="margin-right: 7px">copy previous</a>
+                            <a href="https://thetvdb.com/series/shrimaan-shrimati/seasons/official/1/bulkadd#" class="bulkepisode-copy" data-increment="1" style="margin-right: 7px">+1d</a>
+                            <a href="https://thetvdb.com/series/shrimaan-shrimati/seasons/official/1/bulkadd#" class="bulkepisode-copy" data-increment="7" style="margin-right: 7px">+1w</a>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-md-1">
+                        <label>Runtime</label>
+                        <input type="text" class="form-control" name="runtime[]">
+                    </div>
+                    <div class="col-xs-12 col-md-1">
+                        <label style="display:block">&nbsp;</label>
+                        <button class="btn btn-danger multirow-remove" type="button"><i class="fa fa-trash" aria-hidden="true"></i></button>
+                    </div>
+                </div>
+
+                            </div>
+            
+        </div><button class="btn btn-info multirow-add" type="button">Add Another</button>
+    </fieldset>
+
+    <div class="company-selector">
+    <h3>Companies</h3>
+    <p>When adding a network, enter the original network in the country of origin only.</p>
+    <fieldset>
+        <div class="row">
+            <div class="col-xs-12 col-sm-3">
+                <label>Type</label>
+            </div>
+            <div class="col-xs-12 col-sm-5">
+                <label>Company</label>
+            </div>
+            <div class="col-xs-12 col-sm-3">
+                <label>Details (Country, Format, etc)</label>
+            </div>
+            <div class="col-xs-12 col-sm-2">
+
+            </div>
+        </div>
+
+                                    <div class="row multirow-item mb-1">
+                    <div class="col-xs-12 col-sm-3">
+                        <select name="companytypes[]" class="form-control">
+                            <option value=""></option>
+                                                            <option value="1" selected="">Network</option>
+                                                            <option value="3">Production Company</option>
+                                                            <option value="5">Special Effects</option>
+                                                            <option value="2">Studio</option>
+                                                    </select>
+                    </div>
+                    <div class="col-xs-12 col-sm-5 company-search-area">
+                        <input type="text" class="form-control company-search" name="companynames[]" placeholder="Search for company..." style="display:none">
+                        <input type="hidden" name="companyids[]" class="company-search-id" value="83">
+                        <div class="company-search-selected">
+                            <div class="company-search-item" style="border: 1px solid #666; padding: 5px; margin: 0 0 5px">
+                                <a href="https://thetvdb.com/series/shrimaan-shrimati/seasons/official/1/bulkadd#" class="btn btn-info btn-sm company-search-select pull-right" data-id="83" style="display:none">Select</a>
+                                <a href="https://thetvdb.com/series/shrimaan-shrimati/seasons/official/1/bulkadd#" class="btn btn-info btn-sm company-search-change pull-right">Change</a>
+
+                                <h5 class="mt-0 mb-0">Doordarshan National</h5>
+                                <div class="small mb-0 text-muted">
+                                    <span class="ml-0">
+                                        <i class="fa fa-globe" aria-hidden="true"></i>  India                                     </span>
+                                                                            <span class="ml-1">
+                                            <i class="fa fa-institution" aria-hidden="true"></i> Network
+                                        </span>
+                                                                                                        </div>
+
+                                                            </div>
+                        </div>
+                        <div class="company-search-results" style="display:none"></div>
+                    </div>
+                    <div class="col-xs-12 col-sm-3">
+                        <input type="text" class="form-control" name="companydetails[]" maxlength="100" value="">
+                    </div>
+                    <div class="col-xs-12 col-sm-1">
+                        <button class="btn btn-danger multirow-remove" type="button"><i class="fa fa-trash" aria-hidden="true"></i></button>
+                    </div>
+                </div>
+                    
+        <div class="row multirow-item mb-1">
+            <div class="col-xs-12 col-sm-3">
+                <select name="companytypes[]" class="form-control">
+                    <option value=""></option>
+                                            <option value="1">Network</option>
+                                            <option value="3">Production Company</option>
+                                            <option value="5">Special Effects</option>
+                                            <option value="2">Studio</option>
+                                    </select>
+            </div>
+            <div class="col-xs-12 col-sm-5 company-search-area">
+                <input type="text" class="form-control company-search" name="companynames[]" placeholder="Search for company...">
+                <input type="hidden" name="companyids[]" class="company-search-id" value="">
+                <div class="company-search-selected"></div>
+                <div class="company-search-results" style="display:none"></div>
+            </div>
+            <div class="col-xs-12 col-sm-3">
+                <input type="text" class="form-control" name="companydetails[]">
+            </div>
+            <div class="col-xs-12 col-sm-1">
+                <button class="btn btn-danger multirow-remove" type="button"><i class="fa fa-trash" aria-hidden="true"></i></button>
+            </div>
+        </div>
+
+        <button class="btn btn-info multirow-add" type="button">Add Another</button>
+
+    </fieldset>
+</div>
+    <h3>Content Ratings</h3>
+    <fieldset>
+        <div class="row">
+                            <div class="col-xs-6 col-sm-4 col-md-3">
+                    <div class="form-group">
+                        <label>Argentina</label>
+                        <select name="contentratings[arg]" class="form-control">
+                            <option value=""></option>
+                                                            <option value="1">ATP</option>
+                                                            <option value="2">SAM13</option>
+                                                            <option value="3">SAM15</option>
+                                                            <option value="4">SAM18</option>
+                                                    </select>
+                    </div>
+
+                </div>
+                            <div class="col-xs-6 col-sm-4 col-md-3">
+                    <div class="form-group">
+                        <label>Armenia</label>
+                        <select name="contentratings[arm]" class="form-control">
+                            <option value=""></option>
+                                                            <option value="5">Y</option>
+                                                            <option value="6">EC</option>
+                                                            <option value="7">E</option>
+                                                            <option value="8">Y7</option>
+                                                            <option value="9">E9</option>
+                                                            <option value="10">TW</option>
+                                                            <option value="11">T</option>
+                                                            <option value="12">GA</option>
+                                                            <option value="13">M</option>
+                                                            <option value="14">AO</option>
+                                                            <option value="15">A</option>
+                                                    </select>
+                    </div>
+
+                </div>
+                            <div class="col-xs-6 col-sm-4 col-md-3">
+                    <div class="form-group">
+                        <label>Australia</label>
+                        <select name="contentratings[aus]" class="form-control">
+                            <option value=""></option>
+                                                            <option value="16">P</option>
+                                                            <option value="17">C</option>
+                                                            <option value="18">G</option>
+                                                            <option value="19">PG</option>
+                                                            <option value="20">M</option>
+                                                            <option value="21">MA15+</option>
+                                                            <option value="22">AV15+</option>
+                                                    </select>
+                    </div>
+
+                </div>
+                            <div class="col-xs-6 col-sm-4 col-md-3">
+                    <div class="form-group">
+                        <label>Brazil</label>
+                        <select name="contentratings[bra]" class="form-control">
+                            <option value=""></option>
+                                                            <option value="23">L</option>
+                                                            <option value="24">10</option>
+                                                            <option value="25">12</option>
+                                                            <option value="26">14</option>
+                                                            <option value="27">16</option>
+                                                            <option value="28">18</option>
+                                                    </select>
+                    </div>
+
+                </div>
+                            <div class="col-xs-6 col-sm-4 col-md-3">
+                    <div class="form-group">
+                        <label>Cambodia</label>
+                        <select name="contentratings[khm]" class="form-control">
+                            <option value=""></option>
+                                                            <option value="29">Children</option>
+                                                            <option value="30">General</option>
+                                                            <option value="31">PG-13</option>
+                                                            <option value="32">PG-18</option>
+                                                            <option value="33">Adults only</option>
+                                                    </select>
+                    </div>
+
+                </div>
+                            <div class="col-xs-6 col-sm-4 col-md-3">
+                    <div class="form-group">
+                        <label>Canada</label>
+                        <select name="contentratings[can]" class="form-control">
+                            <option value=""></option>
+                                                            <option value="34">Exempt</option>
+                                                            <option value="35">C</option>
+                                                            <option value="36">C8</option>
+                                                            <option value="37">G</option>
+                                                            <option value="38">PG</option>
+                                                            <option value="39">14+</option>
+                                                            <option value="40">18+</option>
+                                                    </select>
+                    </div>
+
+                </div>
+                            <div class="col-xs-6 col-sm-4 col-md-3">
+                    <div class="form-group">
+                        <label>Chile</label>
+                        <select name="contentratings[chl]" class="form-control">
+                            <option value=""></option>
+                                                            <option value="41">I</option>
+                                                            <option value="42">I7</option>
+                                                            <option value="43">I10</option>
+                                                            <option value="44">I12</option>
+                                                            <option value="45">F</option>
+                                                            <option value="46">R</option>
+                                                            <option value="47">A</option>
+                                                    </select>
+                    </div>
+
+                </div>
+                            <div class="col-xs-6 col-sm-4 col-md-3">
+                    <div class="form-group">
+                        <label>Colombia</label>
+                        <select name="contentratings[col]" class="form-control">
+                            <option value=""></option>
+                                                            <option value="48">Para todas las audiencias</option>
+                                                            <option value="49">Infantil</option>
+                                                            <option value="50">Familiar</option>
+                                                            <option value="51">Adultos</option>
+                                                    </select>
+                    </div>
+
+                </div>
+                            <div class="col-xs-6 col-sm-4 col-md-3">
+                    <div class="form-group">
+                        <label>Croatia</label>
+                        <select name="contentratings[hrv]" class="form-control">
+                            <option value=""></option>
+                                                            <option value="52">12</option>
+                                                            <option value="53">15</option>
+                                                            <option value="54">18</option>
+                                                    </select>
+                    </div>
+
+                </div>
+                            <div class="col-xs-6 col-sm-4 col-md-3">
+                    <div class="form-group">
+                        <label>Denmark</label>
+                        <select name="contentratings[dnk]" class="form-control">
+                            <option value=""></option>
+                                                            <option value="55">Green Logo</option>
+                                                            <option value="56">Yellow Logo</option>
+                                                            <option value="57">Red Logo</option>
+                                                            <option value="58">Blue Logo</option>
+                                                    </select>
+                    </div>
+
+                </div>
+                            <div class="col-xs-6 col-sm-4 col-md-3">
+                    <div class="form-group">
+                        <label>Ecuador</label>
+                        <select name="contentratings[ecu]" class="form-control">
+                            <option value=""></option>
+                                                            <option value="59">A</option>
+                                                            <option value="60">B</option>
+                                                            <option value="61">C</option>
+                                                    </select>
+                    </div>
+
+                </div>
+                            <div class="col-xs-6 col-sm-4 col-md-3">
+                    <div class="form-group">
+                        <label>El Salvador</label>
+                        <select name="contentratings[slv]" class="form-control">
+                            <option value=""></option>
+                                                            <option value="62">A</option>
+                                                            <option value="63">B</option>
+                                                            <option value="64">C</option>
+                                                            <option value="65">D</option>
+                                                            <option value="66">E</option>
+                                                    </select>
+                    </div>
+
+                </div>
+                            <div class="col-xs-6 col-sm-4 col-md-3">
+                    <div class="form-group">
+                        <label>Finland</label>
+                        <select name="contentratings[fin]" class="form-control">
+                            <option value=""></option>
+                                                            <option value="67">S</option>
+                                                            <option value="68">K7</option>
+                                                            <option value="69">K12</option>
+                                                            <option value="70">K16</option>
+                                                            <option value="71">K18</option>
+                                                    </select>
+                    </div>
+
+                </div>
+                            <div class="col-xs-6 col-sm-4 col-md-3">
+                    <div class="form-group">
+                        <label>France</label>
+                        <select name="contentratings[fra]" class="form-control">
+                            <option value=""></option>
+                                                            <option value="72">-No Rating Shown-</option>
+                                                            <option value="73">10</option>
+                                                            <option value="74">12</option>
+                                                            <option value="75">16</option>
+                                                            <option value="76">18</option>
+                                                    </select>
+                    </div>
+
+                </div>
+                            <div class="col-xs-6 col-sm-4 col-md-3">
+                    <div class="form-group">
+                        <label>Germany</label>
+                        <select name="contentratings[deu]" class="form-control">
+                            <option value=""></option>
+                                                            <option value="77">FSK 16</option>
+                                                            <option value="78">FSK 18</option>
+                                                            <option value="558">FSK 0</option>
+                                                            <option value="560">FSK 12</option>
+                                                            <option value="562">FSK 6</option>
+                                                    </select>
+                    </div>
+
+                </div>
+                            <div class="col-xs-6 col-sm-4 col-md-3">
+                    <div class="form-group">
+                        <label>Greece</label>
+                        <select name="contentratings[grc]" class="form-control">
+                            <option value=""></option>
+                                                            <option value="79">K</option>
+                                                            <option value="80">8</option>
+                                                            <option value="81">12</option>
+                                                            <option value="82">16</option>
+                                                            <option value="83">18</option>
+                                                    </select>
+                    </div>
+
+                </div>
+                            <div class="col-xs-6 col-sm-4 col-md-3">
+                    <div class="form-group">
+                        <label>Hong Kong</label>
+                        <select name="contentratings[hkg]" class="form-control">
+                            <option value=""></option>
+                                                            <option value="84">-No Rating Shown-</option>
+                                                            <option value="85">PG</option>
+                                                            <option value="86">M</option>
+                                                    </select>
+                    </div>
+
+                </div>
+                            <div class="col-xs-6 col-sm-4 col-md-3">
+                    <div class="form-group">
+                        <label>Hungary</label>
+                        <select name="contentratings[hun]" class="form-control">
+                            <option value=""></option>
+                                                            <option value="87">-No Rating Shown-</option>
+                                                            <option value="88">Children Friendly</option>
+                                                            <option value="89">6</option>
+                                                            <option value="90">12</option>
+                                                            <option value="91">16</option>
+                                                            <option value="92">18</option>
+                                                    </select>
+                    </div>
+
+                </div>
+                            <div class="col-xs-6 col-sm-4 col-md-3">
+                    <div class="form-group">
+                        <label>Iceland</label>
+                        <select name="contentratings[isl]" class="form-control">
+                            <option value=""></option>
+                                                            <option value="93">L</option>
+                                                            <option value="94">7</option>
+                                                            <option value="95">10</option>
+                                                            <option value="96">12</option>
+                                                            <option value="97">14</option>
+                                                            <option value="98">16</option>
+                                                            <option value="99">18</option>
+                                                    </select>
+                    </div>
+
+                </div>
+                            <div class="col-xs-6 col-sm-4 col-md-3">
+                    <div class="form-group">
+                        <label>India</label>
+                        <select name="contentratings[ind]" class="form-control">
+                            <option value=""></option>
+                                                            <option value="100">अ / U</option>
+                                                            <option value="101">अ/व / U/A</option>
+                                                            <option value="102">व / A</option>
+                                                            <option value="103">S</option>
+                                                    </select>
+                    </div>
+
+                </div>
+                            <div class="col-xs-6 col-sm-4 col-md-3">
+                    <div class="form-group">
+                        <label>Indonesia</label>
+                        <select name="contentratings[idn]" class="form-control">
+                            <option value=""></option>
+                                                            <option value="104">SU</option>
+                                                            <option value="105">P</option>
+                                                            <option value="106">A</option>
+                                                            <option value="107">R</option>
+                                                            <option value="108">P-BO</option>
+                                                            <option value="109">A-BO</option>
+                                                            <option value="110">R-BO</option>
+                                                            <option value="111">D</option>
+                                                    </select>
+                    </div>
+
+                </div>
+                            <div class="col-xs-6 col-sm-4 col-md-3">
+                    <div class="form-group">
+                        <label>Ireland</label>
+                        <select name="contentratings[irl]" class="form-control">
+                            <option value=""></option>
+                                                            <option value="112">GA</option>
+                                                            <option value="113">Ch</option>
+                                                            <option value="114">YA</option>
+                                                            <option value="115">PS</option>
+                                                            <option value="116">MA</option>
+                                                    </select>
+                    </div>
+
+                </div>
+                            <div class="col-xs-6 col-sm-4 col-md-3">
+                    <div class="form-group">
+                        <label>Israel</label>
+                        <select name="contentratings[isr]" class="form-control">
+                            <option value=""></option>
+                                                            <option value="117">G</option>
+                                                            <option value="118">12+</option>
+                                                            <option value="119">15+</option>
+                                                            <option value="120">18+</option>
+                                                            <option value="121">E</option>
+                                                    </select>
+                    </div>
+
+                </div>
+                            <div class="col-xs-6 col-sm-4 col-md-3">
+                    <div class="form-group">
+                        <label>Italy</label>
+                        <select name="contentratings[ita]" class="form-control">
+                            <option value=""></option>
+                                                            <option value="122">Green</option>
+                                                            <option value="123">Yellow</option>
+                                                            <option value="124">Red</option>
+                                                            <option value="125">T</option>
+                                                            <option value="126">BA</option>
+                                                            <option value="127">VM12</option>
+                                                            <option value="128">VM14</option>
+                                                            <option value="129">VM18</option>
+                                                            <option value="571">VM16</option>
+                                                    </select>
+                    </div>
+
+                </div>
+                            <div class="col-xs-6 col-sm-4 col-md-3">
+                    <div class="form-group">
+                        <label>Lithuania</label>
+                        <select name="contentratings[ltu]" class="form-control">
+                            <option value=""></option>
+                                                            <option value="130">-No Rating Shown-</option>
+                                                            <option value="131">N-7</option>
+                                                            <option value="132">N-14</option>
+                                                            <option value="133">S</option>
+                                                    </select>
+                    </div>
+
+                </div>
+                            <div class="col-xs-6 col-sm-4 col-md-3">
+                    <div class="form-group">
+                        <label>Malaysia</label>
+                        <select name="contentratings[mys]" class="form-control">
+                            <option value=""></option>
+                                                            <option value="134">U</option>
+                                                            <option value="135">P13</option>
+                                                            <option value="136">18</option>
+                                                    </select>
+                    </div>
+
+                </div>
+                            <div class="col-xs-6 col-sm-4 col-md-3">
+                    <div class="form-group">
+                        <label>Mexico</label>
+                        <select name="contentratings[mex]" class="form-control">
+                            <option value=""></option>
+                                                            <option value="137">AA</option>
+                                                            <option value="138">A</option>
+                                                            <option value="139">B</option>
+                                                            <option value="140">B-15</option>
+                                                            <option value="141">C</option>
+                                                            <option value="142">D</option>
+                                                    </select>
+                    </div>
+
+                </div>
+                            <div class="col-xs-6 col-sm-4 col-md-3">
+                    <div class="form-group">
+                        <label>Morocco</label>
+                        <select name="contentratings[mar]" class="form-control">
+                            <option value=""></option>
+                                                            <option value="143">Category 1: No Symbol</option>
+                                                            <option value="144">Category 2: -10</option>
+                                                            <option value="145">Category 3: -12</option>
+                                                            <option value="146">Category 4: -16</option>
+                                                    </select>
+                    </div>
+
+                </div>
+                            <div class="col-xs-6 col-sm-4 col-md-3">
+                    <div class="form-group">
+                        <label>The Netherlands</label>
+                        <select name="contentratings[nld]" class="form-control">
+                            <option value=""></option>
+                                                            <option value="147">AL</option>
+                                                            <option value="148">6</option>
+                                                            <option value="149">9</option>
+                                                            <option value="150">12</option>
+                                                            <option value="151">16</option>
+                                                            <option value="569">14</option>
+                                                            <option value="570">18</option>
+                                                    </select>
+                    </div>
+
+                </div>
+                            <div class="col-xs-6 col-sm-4 col-md-3">
+                    <div class="form-group">
+                        <label>New Zealand</label>
+                        <select name="contentratings[nzl]" class="form-control">
+                            <option value=""></option>
+                                                            <option value="152">G</option>
+                                                            <option value="153">PG</option>
+                                                            <option value="154">M</option>
+                                                            <option value="155">16</option>
+                                                            <option value="156">18</option>
+                                                    </select>
+                    </div>
+
+                </div>
+                            <div class="col-xs-6 col-sm-4 col-md-3">
+                    <div class="form-group">
+                        <label>Norway</label>
+                        <select name="contentratings[nor]" class="form-control">
+                            <option value=""></option>
+                                                            <option value="157">A</option>
+                                                            <option value="158">6</option>
+                                                            <option value="159">9</option>
+                                                            <option value="160">12</option>
+                                                            <option value="161">15</option>
+                                                            <option value="162">18</option>
+                                                    </select>
+                    </div>
+
+                </div>
+                            <div class="col-xs-6 col-sm-4 col-md-3">
+                    <div class="form-group">
+                        <label>Peru</label>
+                        <select name="contentratings[per]" class="form-control">
+                            <option value=""></option>
+                                                            <option value="163">APT</option>
+                                                            <option value="164">14</option>
+                                                            <option value="165">18</option>
+                                                    </select>
+                    </div>
+
+                </div>
+                            <div class="col-xs-6 col-sm-4 col-md-3">
+                    <div class="form-group">
+                        <label>Philippines</label>
+                        <select name="contentratings[phl]" class="form-control">
+                            <option value=""></option>
+                                                            <option value="166">G</option>
+                                                            <option value="167">PG</option>
+                                                            <option value="168">SPG</option>
+                                                    </select>
+                    </div>
+
+                </div>
+                            <div class="col-xs-6 col-sm-4 col-md-3">
+                    <div class="form-group">
+                        <label>Poland</label>
+                        <select name="contentratings[pol]" class="form-control">
+                            <option value=""></option>
+                                                            <option value="169">0+</option>
+                                                            <option value="170">7</option>
+                                                            <option value="171">12</option>
+                                                            <option value="172">16</option>
+                                                            <option value="173">18</option>
+                                                    </select>
+                    </div>
+
+                </div>
+                            <div class="col-xs-6 col-sm-4 col-md-3">
+                    <div class="form-group">
+                        <label>Portugal</label>
+                        <select name="contentratings[prt]" class="form-control">
+                            <option value=""></option>
+                                                            <option value="174">Todos</option>
+                                                            <option value="175">10</option>
+                                                            <option value="176">12</option>
+                                                            <option value="177">16</option>
+                                                    </select>
+                    </div>
+
+                </div>
+                            <div class="col-xs-6 col-sm-4 col-md-3">
+                    <div class="form-group">
+                        <label>Romania</label>
+                        <select name="contentratings[rou]" class="form-control">
+                            <option value=""></option>
+                                                            <option value="178">Unrated</option>
+                                                            <option value="179">AP</option>
+                                                            <option value="180">12</option>
+                                                            <option value="181">15</option>
+                                                            <option value="182">18</option>
+                                                            <option value="183">18-X</option>
+                                                    </select>
+                    </div>
+
+                </div>
+                            <div class="col-xs-6 col-sm-4 col-md-3">
+                    <div class="form-group">
+                        <label>Russia</label>
+                        <select name="contentratings[rus]" class="form-control">
+                            <option value=""></option>
+                                                            <option value="184">0+</option>
+                                                            <option value="185">6+</option>
+                                                            <option value="186">12+</option>
+                                                            <option value="187">16+</option>
+                                                            <option value="188">18+</option>
+                                                    </select>
+                    </div>
+
+                </div>
+                            <div class="col-xs-6 col-sm-4 col-md-3">
+                    <div class="form-group">
+                        <label>Singapore</label>
+                        <select name="contentratings[sgp]" class="form-control">
+                            <option value=""></option>
+                                                            <option value="189">G</option>
+                                                            <option value="190">PG</option>
+                                                            <option value="191">PG13</option>
+                                                            <option value="192">NC16</option>
+                                                            <option value="193">M18</option>
+                                                    </select>
+                    </div>
+
+                </div>
+                            <div class="col-xs-6 col-sm-4 col-md-3">
+                    <div class="form-group">
+                        <label>Slovakia</label>
+                        <select name="contentratings[svk]" class="form-control">
+                            <option value=""></option>
+                                                            <option value="194">7</option>
+                                                            <option value="195">12</option>
+                                                            <option value="196">15</option>
+                                                            <option value="197">18</option>
+                                                    </select>
+                    </div>
+
+                </div>
+                            <div class="col-xs-6 col-sm-4 col-md-3">
+                    <div class="form-group">
+                        <label>Slovenia</label>
+                        <select name="contentratings[svn]" class="form-control">
+                            <option value=""></option>
+                                                            <option value="198">VS</option>
+                                                            <option value="199">12+</option>
+                                                            <option value="200">15+</option>
+                                                            <option value="201">18+</option>
+                                                    </select>
+                    </div>
+
+                </div>
+                            <div class="col-xs-6 col-sm-4 col-md-3">
+                    <div class="form-group">
+                        <label>South Africa</label>
+                        <select name="contentratings[zaf]" class="form-control">
+                            <option value=""></option>
+                                                            <option value="202">Family</option>
+                                                            <option value="203">PG</option>
+                                                            <option value="204">13</option>
+                                                            <option value="205">16</option>
+                                                            <option value="206">18</option>
+                                                            <option value="207">R18</option>
+                                                    </select>
+                    </div>
+
+                </div>
+                            <div class="col-xs-6 col-sm-4 col-md-3">
+                    <div class="form-group">
+                        <label>South Korea</label>
+                        <select name="contentratings[kor]" class="form-control">
+                            <option value=""></option>
+                                                            <option value="208">ALL</option>
+                                                            <option value="209">7</option>
+                                                            <option value="210">12</option>
+                                                            <option value="211">15</option>
+                                                            <option value="212">19</option>
+                                                            <option value="213">Exempt</option>
+                                                    </select>
+                    </div>
+
+                </div>
+                            <div class="col-xs-6 col-sm-4 col-md-3">
+                    <div class="form-group">
+                        <label>Spain</label>
+                        <select name="contentratings[esp]" class="form-control">
+                            <option value=""></option>
+                                                            <option value="214">Infantil</option>
+                                                            <option value="215">TP</option>
+                                                            <option value="216">7</option>
+                                                            <option value="217">10</option>
+                                                            <option value="218">12</option>
+                                                            <option value="219">13</option>
+                                                            <option value="220">16</option>
+                                                            <option value="221">18</option>
+                                                    </select>
+                    </div>
+
+                </div>
+                            <div class="col-xs-6 col-sm-4 col-md-3">
+                    <div class="form-group">
+                        <label>Taiwan</label>
+                        <select name="contentratings[twn]" class="form-control">
+                            <option value=""></option>
+                                                            <option value="222">0+</option>
+                                                            <option value="223">6+</option>
+                                                            <option value="224">12+</option>
+                                                            <option value="225">15+</option>
+                                                            <option value="226">18+</option>
+                                                    </select>
+                    </div>
+
+                </div>
+                            <div class="col-xs-6 col-sm-4 col-md-3">
+                    <div class="form-group">
+                        <label>Thailand</label>
+                        <select name="contentratings[tha]" class="form-control">
+                            <option value=""></option>
+                                                            <option value="227">Preschool (ป)</option>
+                                                            <option value="228">Children (ด)</option>
+                                                            <option value="229">General (ท)</option>
+                                                            <option value="230">PG 13 (น๑๓)</option>
+                                                            <option value="231">PG 18 (น๑๘)</option>
+                                                            <option value="232">Adults (ฉ)</option>
+                                                    </select>
+                    </div>
+
+                </div>
+                            <div class="col-xs-6 col-sm-4 col-md-3">
+                    <div class="form-group">
+                        <label>Turkey</label>
+                        <select name="contentratings[tur]" class="form-control">
+                            <option value=""></option>
+                                                            <option value="233">Exempt</option>
+                                                            <option value="234">Genel İzleyici</option>
+                                                            <option value="235">7+</option>
+                                                            <option value="236">13+</option>
+                                                            <option value="237">18+</option>
+                                                    </select>
+                    </div>
+
+                </div>
+                            <div class="col-xs-6 col-sm-4 col-md-3">
+                    <div class="form-group">
+                        <label>Ukraine</label>
+                        <select name="contentratings[ukr]" class="form-control">
+                            <option value=""></option>
+                                                            <option value="238">Not Rated</option>
+                                                            <option value="239">12+</option>
+                                                            <option value="240">16+</option>
+                                                            <option value="241">18+</option>
+                                                    </select>
+                    </div>
+
+                </div>
+                            <div class="col-xs-6 col-sm-4 col-md-3">
+                    <div class="form-group">
+                        <label>United States of America</label>
+                        <select name="contentratings[usa]" class="form-control">
+                            <option value=""></option>
+                                                            <option value="242">TV-Y</option>
+                                                            <option value="243">TV-Y7</option>
+                                                            <option value="244">TV-G</option>
+                                                            <option value="245">TV-PG</option>
+                                                            <option value="246">TV-14</option>
+                                                            <option value="247">TV-MA</option>
+                                                    </select>
+                    </div>
+
+                </div>
+                            <div class="col-xs-6 col-sm-4 col-md-3">
+                    <div class="form-group">
+                        <label>Venezuela</label>
+                        <select name="contentratings[ven]" class="form-control">
+                            <option value=""></option>
+                                                            <option value="248">Todo usuario</option>
+                                                            <option value="249">Supervisado</option>
+                                                            <option value="250">Adulto</option>
+                                                    </select>
+                    </div>
+
+                </div>
+                            <div class="col-xs-6 col-sm-4 col-md-3">
+                    <div class="form-group">
+                        <label>Great Britain</label>
+                        <select name="contentratings[gbr]" class="form-control">
+                            <option value=""></option>
+                                                            <option value="563">U</option>
+                                                            <option value="564">PG</option>
+                                                            <option value="565">12 / 12A</option>
+                                                            <option value="566">15</option>
+                                                            <option value="567">18</option>
+                                                            <option value="568">R18</option>
+                                                    </select>
+                    </div>
+
+                </div>
+                    </div>
+    </fieldset>
+
+    <div class="alert alert-danger error-message" style="display:none">
+                    Number and name is required for every episode. Please correct or delete the problematic rows above to continue.
+            </div>
+    <button type="submit" class="btn btn-success">Add Episodes</button>
+    </form>
+    </div>
+
+    
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12 col-sm-3">
+                    <h5>About</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="https://thetvdb.com/about">About TheTVDB</a></li>
+                        <li><a href="https://thetvdb.com/points" onclick="ga(&#39;send&#39;, &#39;event&#39;, &#39;gamification_link&#39;, &#39;footer&#39;);">Earn Points</a></li>
+                        <li><a href="https://thetvdb.com/subscribe">Subscribe</a></li>
+                        <li><a href="https://thetvdb.com/api-information">API</a></li>
+                        <li><a href="https://feedback.userreport.com/cdaca6ba-2142-4b27-b04d-26ceaa067824/" target="_blank">Feature Suggestions</a></li>
+                        <li><a href="https://support.thetvdb.com/kb/" target="_blank">Knowledgebase</a></li>
+                        <li><a href="http://support.thetvdb.com/" target="_blank">Support</a></li>
+                    </ul>
+                </div>
+                <div class="col-xs-12 col-sm-3">
+                    <h5>Discover</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="https://thetvdb.com/on-today">On Today</a></li>
+                        <li><a href="https://thetvdb.com/awards">Awards</a></li>
+                        <li><a href="https://thetvdb.com/companies">Companies</a></li>
+                        <li><a href="https://thetvdb.com/lists">Lists</a></li>
+                        <li><a href="https://thetvdb.com/people">People</a></li>
+                        <li><a href="https://thetvdb.com/taxonomy">Taxonomy</a></li>
+                    </ul>
+                </div>
+                <div class="col-xs-12 col-sm-3">
+                    <h5>Legal</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="https://thetvdb.com/tos">Terms of Service</a></li>
+                        <li><a href="https://thetvdb.com/privacy-policy">Privacy Policy</a></li>
+                        <li><a href="https://thetvdb.com/dmca">DMCA</a></li>
+                                                    <li><a href="https://thetvdb.com/dashboard/account/ccpa">Do Not Sell My Data</a></li>
+                                            </ul>
+                </div>
+                <div class="col-xs-12 col-sm-3">
+                    <h5>Follow Us</h5>
+                    <a target="_blank" href="https://www.facebook.com/TheTVDB" class="footer-social">
+                        <span class="fa-stack fa-lg">
+                            <i class="fa fa-circle fa-stack-2x"></i>
+                            <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
+                        </span>
+                    </a>
+                    <a target="_blank" href="https://twitter.com/thetvdb" class="footer-social">
+                        <span class="fa-stack fa-lg">
+                            <i class="fa fa-circle fa-stack-2x"></i>
+                            <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+                        </span>
+                    </a>
+                </div>
+            </div>
+            <div class="row mt-2">
+                <div class="col-xs-12">
+                    <a href="https://thetvdb.com/"><img alt="TheTVDB.com" src="./Bulk Add Episodes - TheTVDB.com_files/logo_footer.svg" class="footer-logo" height="40"></a>
+                    © 2023 TheTVDB.com, A Whip Media Company. ALL RIGHTS RESERVED.
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        window.auth = '1';
+                    window.auth_language = 'eng';
+            window.user_unique = '9933a4224281178fb122e0fea3848f124313f48b';
+            </script>
+    <!-- Polyfill only included to allow IE11 to use search. Remove this in 2025 -->
+    <script src="./Bulk Add Episodes - TheTVDB.com_files/polyfill.min.js.download"></script>
+    <script src="./Bulk Add Episodes - TheTVDB.com_files/instantsearch.js@3.5.3"></script>
+    <script src="./Bulk Add Episodes - TheTVDB.com_files/algoliasearchLite.min.js.download"></script>
+    <script src="./Bulk Add Episodes - TheTVDB.com_files/vendor-0afb763a93.js.download"></script>
+    <script src="./Bulk Add Episodes - TheTVDB.com_files/autocomplete.jquery.min.js.download"></script>
+    <script src="./Bulk Add Episodes - TheTVDB.com_files/bootstrap-select.min.js.download"></script>
+
+    <script src="./Bulk Add Episodes - TheTVDB.com_files/react.production.min.js.download" crossorigin=""></script>
+    <script src="./Bulk Add Episodes - TheTVDB.com_files/react-dom.production.min.js.download" crossorigin=""></script>
+    <ins class="adsbygoogle adsbygoogle-noablate" data-adsbygoogle-status="done" style="display: none !important;" data-ad-status="unfilled"><div id="aswift_0_host" style="border: none; height: 0px; width: 0px; margin: 0px; padding: 0px; position: relative; visibility: visible; background-color: transparent; display: inline-block;" tabindex="0" title="Advertisement" aria-label="Advertisement"><iframe id="aswift_0" name="aswift_0" style="left:0;position:absolute;top:0;border:0;width:undefinedpx;height:undefinedpx;" sandbox="allow-forms allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts allow-top-navigation-by-user-activation" frameborder="0" marginwidth="0" marginheight="0" vspace="0" hspace="0" allowtransparency="true" scrolling="no" src="./Bulk Add Episodes - TheTVDB.com_files/ads.html" data-google-container-id="a!1" data-load-complete="true"></iframe></div></ins><script src="./Bulk Add Episodes - TheTVDB.com_files/NotificationIndicator-905ffe2297.js.download"></script>
+    <script src="./Bulk Add Episodes - TheTVDB.com_files/NotificationIcon-e8c973a511.js.download"></script>
+    <script src="./Bulk Add Episodes - TheTVDB.com_files/Comments-1ca38b0c17.js.download"></script>
+    <script src="./Bulk Add Episodes - TheTVDB.com_files/PinnedComments-acdd7dfcde.js.download"></script>
+    <style>
+    .multirow-item:first-child .bulkepisode-copy-section {
+        display: none;
+    }
+</style>
+<script>
+    $(document).ready(function() {
+        $('.bulkepisode-copy').on('click', function(e) {
+            var previousDate = $(this).parents('.multirow-item').prev().find('input[type="date"]').val();
+            if (previousDate) {
+                var date = new Date(previousDate);
+                var daysIncrease = $(this).data('increment')
+                date.setDate(date.getDate() + daysIncrease);
+                $(this).parents('.multirow-item').find('input[type="date"]').val(date.toISOString().slice(0,10));
+            }
+            e.preventDefault();
+        });
+    });
+</script>
+
+
+<iframe src="./Bulk Add Episodes - TheTVDB.com_files/aframe.html" width="0" height="0" style="display: none;"></iframe></body><iframe id="google_esf" name="google_esf" src="./Bulk Add Episodes - TheTVDB.com_files/zrt_lookup.html" style="display: none;"></iframe></html>
