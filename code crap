@@ -1,0 +1,33 @@
+
+            # break
+
+            """ number_fields.clear()
+            time.sleep(1)
+            number_fields.send_keys(keys[i]["number"])"""
+            # name_fields.clear()
+            # name_fields.send_keys(keys[i]["name"])
+            """
+            overview_fields.clear()
+            overview_fields.send_keys(keys[i]["desc"])
+            rt_fields.clear()
+            rt_fields.send_keys(keys[i]["runtime"])
+            """
+            # [x.update({'added': True}) for x in ep_info if x["number"] == keys[i]["number"]]
+
+
+            # print("pop up found")
+
+            #  number_fields = driver.find_element(By.XPATH, "//input[@data-bind='value:episode_number']")
+            # name_fields = popup.find_element(By.XPATH, "//input[@data-bind='value:name']")
+            """overview_fields = driver.find_element(By.XPATH, "//textarea[@data-bind='value:overview']")
+            rt_fields = driver.find_element(By.XPATH, "//input[@data-bind='value:runtime']")
+            driver.implicitly_wait(10)
+            ActionChains(driver).move_to_element(number_fields).click(number_fields).perform()
+            """
+            #  keys = list(filter(lambda x: not x['added'], ep_info))
+
+            """element = WebDriverWait(popup, 20).until(
+                EC.presence_of_element_located((By.XPATH, "//input[@data-bind='value:episode_number']")))
+            # print("name field found")
+            # element.clear()
+            element.send_keys(epi['number'])"""
